@@ -1,0 +1,90 @@
+[
+    {
+        "model": "catalogo.producto",
+        "pk": 1,
+        "fields": {
+            "nombre": "laptop lenovo ideapad 5",
+            "precio": "2899.00",
+            "categoria": "Laptops",
+            "stock": 8,
+            "creado_en": "2026-11-12T09:00:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 2,
+        "fields": {
+            "nombre": "laptop asus vivobook 15",
+            "precio": "2199.90",
+            "categoria": "Laptops",
+            "stock": 0,
+            "creado_en": "2026-11-12T09:05:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 3,
+        "fields": {
+            "nombre": "samsung galaxy a55",
+            "precio": "1499.00",
+            "categoria": "Celulares",
+            "stock": 12,
+            "creado_en": "2026-11-12T09:10:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 4,
+        "fields": {
+            "nombre": "xiaomi redmi note 14",
+            "precio": "999.00",
+            "categoria": "Celulares",
+            "stock": 20,
+            "creado_en": "2026-11-12T09:15:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 5,
+        "fields": {
+            "nombre": "monitor lg 24 pulgadas ips",
+            "precio": "549.90",
+            "categoria": "Monitores",
+            "stock": 5,
+            "creado_en": "2026-11-12T09:20:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 6,
+        "fields": {
+            "nombre": "teclado mecánico redragon",
+            "precio": "189.00",
+            "categoria": "Accesorios",
+            "stock": 15,
+            "creado_en": "2026-11-12T09:25:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 7,
+        "fields": {
+            "nombre": "mouse logitech g203",
+            "precio": "89.90",
+            "categoria": "Accesorios",
+            "stock": 0,
+            "creado_en": "2026-11-12T09:30:00-05:00"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 8,
+        "fields": {
+            "nombre": "audífonos sony wh-ch520",
+            "precio": "229.00",
+            "categoria": "Accesorios",
+            "stock": 7,
+            "creado_en": "2026-11-12T09:35:00-05:00"
+        }
+    }
+]
