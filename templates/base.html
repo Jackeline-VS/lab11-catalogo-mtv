@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TechZone{% endblock %}</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 1rem; background: #f8fafc; color: #1e293b; }
+        header, footer { background: #1e3a8a; color: white; padding: 1rem; margin-bottom: 2rem; border-radius: 8px; }
+        footer { margin-top: 2rem; margin-bottom: 0; text-align: center; font-size: .9rem; }
+        header nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+        header a { color: white; text-decoration: none; margin-left: 1rem; }
+        header a.activo { font-weight: bold; border-bottom: 2px solid #facc15; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .card { background: white; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 8px; }
+        .card h3 { margin-top: 0; }
+        .precio { font-size: 1.4rem; font-weight: bold; color: #1e3a8a; }
+        .badge { display: inline-block; padding: .2rem .6rem; border-radius: 999px; font-size: .8rem; color: white; }
+        .ok { background: #16a34a; } .pocas { background: #f59e0b; } .agotado { background: #dc2626; }
+        .categoria { font-size: .8rem; color: #64748b; letter-spacing: .05em; }
+        .filtros a { display: inline-block; margin: 0 .4rem .5rem 0; padding: .3rem .8rem; border: 1px solid #1e3a8a; border-radius: 999px; color: #1e3a8a; text-decoration: none; }
+        .filtros a.activo { background: #1e3a8a; color: white; }
+        .buscador { display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .buscador input { flex: 1; min-width: 200px; padding: .6rem; border: 1px solid #cbd5e1; border-radius: 8px; }
+        .buscador button { background: #1e3a8a; color: white; border: none; padding: .6rem 1.2rem; border-radius: 8px; cursor: pointer; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .stats div { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; text-align: center; }
+        .stats strong { display: block; font-size: 2rem; color: #1e3a8a; }
+        .btn { display: inline-block; background: #1e3a8a; color: white; padding: .6rem 1.2rem; border-radius: 8px; text-decoration: none; }
+        .muted { color: #64748b; font-size: .85rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <strong>🛒 TechZone</strong>
+            <div>
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}activo{% endif %}">Inicio</a>
+                <a href="{% url 'catalogo' %}" class="{% if request.resolver_match.url_name == 'catalogo' %}activo{% endif %}">Catálogo</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>&copy; 2026 IS093A | Django MTV – Jackeline Vivanco Solano</footer>
+</body>
+</html>

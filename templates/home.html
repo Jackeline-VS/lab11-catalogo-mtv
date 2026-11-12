@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | TechZone{% endblock %}
+
+{% block content %}
+<h1>{{ titulo }}</h1>
+<p>Catálogo de productos tecnológicos desarrollado con Django siguiendo la arquitectura <strong>MTV</strong>.</p>
+
+<div class="stats">
+    <div><strong>{{ total }}</strong>producto{{ total|pluralize }} registrado{{ total|pluralize }}</div>
+    <div><strong>{{ disponibles }}</strong>disponible{{ disponibles|pluralize }}</div>
+    <div><strong>{{ agotados }}</strong>agotado{{ agotados|pluralize }}</div>
+</div>
+
+<a class="btn" href="{% url 'catalogo' %}">Ver catálogo →</a>
+{% endblock %}

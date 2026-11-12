@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}Catálogo | TechZone{% endblock %}
+
+{% block content %}
+<h2>Listado de Productos</h2>
+
+<!-- Buscador por nombre -->
+<form method="get" action="{% url 'catalogo' %}" class="buscador">
+    <input type="text" name="q" value="{{ q }}" placeholder="Buscar producto por nombre...">
+    {% if categoria_actual %}
+        <input type="hidden" name="categoria" value="{{ categoria_actual }}">
+    {% endif %}
+    <button type="submit">Buscar</button>
+</form>
+
+<!-- Filtro por categoría -->
+<div class="filtros">
+    <a href="{% url 'catalogo' %}" class="{% if not categoria_actual %}activo{% endif %}">Todas</a>
+    {% for cat in categorias %}
+        <a href="{% url 'catalogo' %}?categoria={{ cat|urlencode }}" class="{% if categoria_actual|lower == cat|lower %}activo{% endif %}">{{ cat }}</a>
+    {% endfor %}
+</div>
+
+<p class="muted">
+    Mostrando {{ productos|length }} producto{{ productos|length|pluralize }} con stock, ordenados por precio.
+    {% if categoria_actual %}
+        Categoría: <strong>{{ categoria_actual|title }}</strong>.
+    {% endif %}
+    {% if q %}
+        Búsqueda: <strong>{{ q }}</strong>.
+    {% endif %}
+</p>
+
+<div class="grid">
+    {% for producto in productos %}
+    <div class="card">
+        <span class="categoria">{{ producto.categoria|upper }}</span>
+        <h3>{{ producto.nombre|title }}</h3>
+        <p class="precio">S/ {{ producto.precio|floatformat:2 }}</p>
+
+        {% if producto.stock == 0 %}
+            <span class="badge agotado">Agotado</span>
+        {% elif producto.stock <= 5 %}
+            <span class="badge pocas">¡Últimas {{ producto.stock }} unidades!</span>
+        {% else %}
+            <span class="badge ok">Stock: {{ producto.stock }}</span>
+        {% endif %}
+
+        <p class="muted">Registrado {{ producto.creado_en|naturaltime }}</p>
+    </div>
+    {% empty %}
+    <p>No hay productos disponibles.</p>
+    {% endfor %}
+</div>
+
+<!-- Productos agotados (excluidos del QuerySet principal) -->
+{% if agotados %}
+<h3 style="margin-top:2rem;">Agotados</h3>
+<div class="grid">
+    {% for producto in agotados %}
+    <div class="card" style="opacity:.6;">
+        <span class="categoria">{{ producto.categoria|upper }}</span>
+        <h3>{{ producto.nombre|title }}</h3>
+        <p class="precio">S/ {{ producto.precio|floatformat:2 }}</p>
+        <span class="badge agotado">Agotado</span>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
